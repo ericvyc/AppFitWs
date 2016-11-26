@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="AppFit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+
+            <!-- Configuração de banco remoto -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://db_appfit.mysql.dbaas.com.br/db_appfit" />
+            <property name="javax.persistence.jdbc.user" value="db_appfit" />
+            <property name="javax.persistence.jdbc.password" value="Root#AppFit#" />
+        </properties>
+    </persistence-unit>
+</persistence>
