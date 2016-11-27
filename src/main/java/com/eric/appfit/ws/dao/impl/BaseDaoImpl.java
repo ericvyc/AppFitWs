@@ -1,18 +1,19 @@
 package com.eric.appfit.ws.dao.impl;
 
-import com.sun.jersey.spi.inject.Inject;
+import com.google.inject.Singleton;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by ericvyc on 26/11/16.
  */
+@Singleton
 public abstract class BaseDaoImpl<T, I extends Serializable> {
 
     @Inject
@@ -28,7 +29,7 @@ public abstract class BaseDaoImpl<T, I extends Serializable> {
         this.persistedClass = persistedClass;
     }
 
-    public T save(@Valid T entity) {
+    public T save(T entity) {
         EntityTransaction t = entityManager.getTransaction();
         t.begin();
         entityManager.persist(entity);
@@ -37,7 +38,7 @@ public abstract class BaseDaoImpl<T, I extends Serializable> {
         return entity;
     }
 
-    public T update(@Valid T entity) {
+    public T update(T entity) {
         EntityTransaction t = entityManager.getTransaction();
         t.begin();
         entityManager.merge(entity);

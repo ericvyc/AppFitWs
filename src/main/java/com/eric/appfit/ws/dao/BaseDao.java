@@ -1,6 +1,5 @@
 package com.eric.appfit.ws.dao;
 
-import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,9 +8,9 @@ import java.util.List;
  */
 public interface BaseDao<T, I extends Serializable> {
 
-    T save(@Valid T entity);
+    T save(T entity);
 
-    T update(@Valid T entity);
+    T update(T entity);
 
     void remove(I id);
 

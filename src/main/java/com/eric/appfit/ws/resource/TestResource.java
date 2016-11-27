@@ -1,8 +1,8 @@
 package com.eric.appfit.ws.resource;
 
-import com.eric.appfit.ws.configuration.GuicyInterface;
-import com.google.inject.Inject;
+import com.eric.appfit.ws.dao.UsuarioDao;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -15,17 +15,17 @@ import javax.ws.rs.core.Response;
 @Consumes(MediaType.APPLICATION_JSON)
 public class TestResource {
 
-    private final GuicyInterface gi;
+    private UsuarioDao dao;
 
     @Inject
-    public TestResource(final GuicyInterface gi){
-        this.gi = gi;
+    private void setDao(UsuarioDao dao){
+        this.dao = dao;
     }
 
     @GET
-    public Response hello(@QueryParam("x") String x){
-        String resposta = "Deu certo: " + gi.toString() + " Parâmetro:" + x;
-        return Response.ok(resposta).build();
+    @Path("/todos")
+    public Response hello(){
+        return Response.ok(dao.findAll()).build();
     }
 
 }
